@@ -66,6 +66,85 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    public void requestPermissions(){
+
+        Context context = getApplicationContext();
+
+        /*
+        CharSequence text = "request permissions!";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+        */
+
+        // These are the permissions we want to request.
+        String[] perms = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CAMERA};
+
+
+        int result = android.support.v4.app.ActivityCompat.checkSelfPermission(context, perms[0]);
+//        System.err.println("Permission result is: ");
+//        System.err.println(result);
+
+        /* TODO I haven't figured this one out yet. */
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.ACCESS_FINE_LOCATION)){
+            //If the user has denied the permission previously your code will come to this block
+            //Here you can explain why you need this permission
+            //Explain here why you need this permission
+            System.err.println("show show requset permissions");
+        }
+
+        if (Build.VERSION.SDK_INT>Build.VERSION_CODES.LOLLIPOP_MR1){
+            System.err.println("Asking for specific permissions:");
+        } else {
+            return;
+        }
+
+        // The magic piece of code:
+        ActivityCompat.requestPermissions(this, perms, FINE_LOC);
+
+        // The question is whether we can know what happens when the dialogue is opened.
+
+    }
+
+
+
+    @Override
+    /*
+        Here, we know whether the request failed. If it succeeded, then whether user accept or deny.
+     */
+    public void onRequestPermissionsResult(int permsRequestCode, String[] permissions, int[] grantResults){
+        String text; // Temporary variable, delete later.
+        if (permissions.length < 1 || grantResults.length < 1) { // Request failed.
+            return;
+        }
+
+        switch(permsRequestCode){
+            case FINE_LOC:
+                System.err.println(permsRequestCode);
+                System.err.println(permissions.length);
+                System.err.println(grantResults.length);
+
+                boolean locationAccepted = grantResults[0]==PackageManager.PERMISSION_GRANTED;
+                if (locationAccepted){
+                    text = "Loc Accepted.";
+                }else{
+                    text = "Loc Denied.";
+                }
+
+                locationAccepted = grantResults[1]==PackageManager.PERMISSION_GRANTED;
+                if (locationAccepted){
+                    text = "Cam Accepted.";
+                }else{
+                    text = "Cam Denied.";
+                }
+                break;
+        }
+    }
+
+
+
     /*
         Not really necessary. Not required to actually use the features to request the permissions.
      */
@@ -116,98 +195,7 @@ public class MainActivity extends AppCompatActivity {
         */
     }
 
-    public void requestPermissions(){
-
-        Context context = getApplicationContext();
-
-        /*
-        CharSequence text = "request permissions!";
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-        */
-
-        // These are the permissions we want to request.
-        String[] perms = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CAMERA};
-
-
-        int result = android.support.v4.app.ActivityCompat.checkSelfPermission(context, perms[0]);
-//        System.err.println("Permission result is: ");
-//        System.err.println(result);
-
-        /* TODO I haven't figured this one out yet. */
-        if (ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.ACCESS_FINE_LOCATION)){
-            //If the user has denied the permission previously your code will come to this block
-            //Here you can explain why you need this permission
-            //Explain here why you need this permission
-            System.err.println("show show requset permissions");
-        }
-
-        if (Build.VERSION.SDK_INT>Build.VERSION_CODES.LOLLIPOP_MR1){
-            System.err.println("Asking for specific permissions:");
-        } else {
-            return;
-        }
-
-        // The magic piece of code:
-        ActivityCompat.requestPermissions(this, perms, FINE_LOC);
-
-        // The question is whether we can know what happens when the dialogue is opened.
-
-    }
-
-
-
-    @Override
-    public void onRequestPermissionsResult(int permsRequestCode, String[] permissions, int[] grantResults){
-
-        Context context = getApplicationContext();
-        CharSequence text = "Nothing happened.";
-        int duration = Toast.LENGTH_SHORT;
-
-        if (permissions.length < 1 || grantResults.length < 1) {
-
-            text = "Empty arrays";
-            return;
-        }
-
-        switch(permsRequestCode){
-
-            case FINE_LOC:
-
-                System.err.println(permsRequestCode);
-                System.err.println(permissions.length);
-                System.err.println(grantResults.length);
-
-                boolean locationAccepted = grantResults[0]==PackageManager.PERMISSION_GRANTED;
-                if (locationAccepted){
-                    text = "Loc Accepted.";
-                }
-                else{
-                    text = "Loc Denied.";
-                }
-                //boolean cameraAccepted = grantResults[1]==PackageManager.PERMISSION_GRANTED;
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-
-                locationAccepted = grantResults[1]==PackageManager.PERMISSION_GRANTED;
-                if (locationAccepted){
-                    text = "Cam Accepted.";
-                }
-                else{
-                    text = "Cam Denied.";
-                }
-                //boolean cameraAccepted = grantResults[1]==PackageManager.PERMISSION_GRANTED;
-                 toast = Toast.makeText(context, text, duration);
-                toast.show();
-                break;
-
-        }
-
-
-    }
-
+    /* Begin original code. */
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
