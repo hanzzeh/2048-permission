@@ -66,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /*
+        Not really necessary. Not required to actually use the features to request the permissions.
+     */
     public void getLocation(){
         Context context = getApplicationContext();
         CharSequence text = "Called Get Location";
@@ -77,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         // Acquire a reference to the system Location Manager
         LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
-// Define a listener that responds to location updates
+        // Define a listener that responds to location updates
         LocationListener locationListener = new LocationListener() {
             public void onLocationChanged(Location location) {
                 // Called when a new location is found by the network location provider.
@@ -92,11 +95,12 @@ public class MainActivity extends AppCompatActivity {
             public void onProviderDisabled(String provider) {}
         };
 
-// Register the listener with the Location Manager to receive location updates
+        /*
+        // Register the listener with the Location Manager to receive location updates
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
         String locationProvider = LocationManager.NETWORK_PROVIDER;
-// Or, use GPS location data:
-// String locationProvider = LocationManager.GPS_PROVIDER;
+        // Or, use GPS location data:
+        // String locationProvider = LocationManager.GPS_PROVIDER;
 
         locationManager.requestLocationUpdates(locationProvider, 0, 0, locationListener);
 
@@ -109,23 +113,30 @@ public class MainActivity extends AppCompatActivity {
         else {
             System.err.println("There is a null lastknownlocation.");
         }
+        */
     }
 
     public void requestPermissions(){
+
         Context context = getApplicationContext();
+
+        /*
         CharSequence text = "request permissions!";
         int duration = Toast.LENGTH_SHORT;
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+        */
 
+        // These are the permissions we want to request.
         String[] perms = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CAMERA};
 
 
         int result = android.support.v4.app.ActivityCompat.checkSelfPermission(context, perms[0]);
-        System.err.println("Permission result is: ");
-        System.err.println(result);
+//        System.err.println("Permission result is: ");
+//        System.err.println(result);
 
+        /* TODO I haven't figured this one out yet. */
         if (ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.ACCESS_FINE_LOCATION)){
             //If the user has denied the permission previously your code will come to this block
             //Here you can explain why you need this permission
@@ -133,21 +144,16 @@ public class MainActivity extends AppCompatActivity {
             System.err.println("show show requset permissions");
         }
 
-
-        //ActivityCompat.show
-
         if (Build.VERSION.SDK_INT>Build.VERSION_CODES.LOLLIPOP_MR1){
-            System.err.println("Ask for specific permissions:");
-        }
-        else{
+            System.err.println("Asking for specific permissions:");
+        } else {
             return;
         }
 
-        ActivityCompat.requestPermissions(
-                this,
-                perms,
-                FINE_LOC
-        );
+        // The magic piece of code:
+        ActivityCompat.requestPermissions(this, perms, FINE_LOC);
+
+        // The question is whether we can know what happens when the dialogue is opened.
 
     }
 
