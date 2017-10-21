@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="35f15d33-5f71-44f4-81dd-0bc104a5881e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AnExplorer" afterPath="$PROJECT_DIR$/../AnExplorer" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2048/src/main/java/com/tpcstld/twozerogame/MainActivity.java" afterPath="$PROJECT_DIR$/2048/src/main/java/com/tpcstld/twozerogame/MainActivity.java" />
     </list>
     <ignored path="2048-study.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,8 +37,8 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/2048/src/main/java/com/tpcstld/twozerogame/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
+            <state relative-caret-position="76">
+              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1817,8 +1815,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2101" />
-    <option name="y" value="100" />
+    <option name="x" value="2038" />
+    <option name="y" value="1300" />
     <option name="width" value="1162" />
     <option name="height" value="885" />
   </component>
@@ -2107,7 +2105,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2101" y="100" width="1162" height="885" extended-state="0" />
+    <frame x="2038" y="1300" width="1162" height="885" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2181,8 +2179,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/2048/src/main/java/com/tpcstld/twozerogame/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
+        <state relative-caret-position="76">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding />
         </state>
       </provider>
